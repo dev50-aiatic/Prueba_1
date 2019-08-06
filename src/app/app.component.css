@@ -1,0 +1,23 @@
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+body{margin-top:20px;}
+.fa-fw {width: 2em;}
+
+.lim-menu{
+    margin-top: 25px;  
+    font-family: 'Noto Sans SC', sans-serif;
+    font-size: 2em;
+    color: #28D975;
+    
+}
+.lim-TopBar{
+    margin-top: 25px;
+    font-size: 6em;
+    color: #090B07;
+    float: none;
+}
+.color-fondo{
+   background-color: #ACF731;
+}
+.fuente-titulo{
+    font-family: 'Permanent Marker', cursive;
+}
