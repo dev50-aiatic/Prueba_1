@@ -1,24 +1,32 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { Menu,TopBar } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 
-import {app_routing} from './app.routes';
+import { AppComponent } from './app.component';
+import { EncabezadoComponent } from './encabezado/encabezado.component';
+import { FooterComponent } from './footer/footer.component';
+import { ContactoComponent } from './contacto/contacto.component';
+
+import { RouterModule, Routes } from '@angular/router';
+
+const routes : Routes =  [
+  { path: 'contacto', component: ContactoComponent},
+  { path: 'footer', component: FooterComponent},
+  { path: '', component: FooterComponent}
+  ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    Menu,
-    TopBar,
-    HomeComponent
+    EncabezadoComponent,
+    FooterComponent,
+    ContactoComponent,
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
-    app_routing
+    RouterModule.forRoot(routes),
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
