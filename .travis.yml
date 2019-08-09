@@ -1,9 +1,19 @@
+#.travis.yml
+
 language: node_js
 node_js:
-  - "v10.16.1"
-install:
+  - "10.16.1"
+
+branches:
+  only:
+    - master
+
+before_script:
   - npm install -g firebase-tools
+  - npm install -g @angular/cli
+
 script:
- - echo "deploying"
-after-succes:
- - firebase deploy --token $FIREBASE_TOKEN
+  - ng build --prod
+
+after_success:
+  - firebase deploy --token $FIREBASE_TOKEN
