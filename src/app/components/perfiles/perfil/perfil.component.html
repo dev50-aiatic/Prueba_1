@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card mt-5">
         <div class="card-body"> 
             <form #perfilForm="ngForm" (ngSubmit)="onSubmit(perfilForm)">  
                 <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="perfilService.seleccionarPerfil.$key">
@@ -55,8 +55,9 @@
                </div>
                
                 <div>
-                   <button class="btn btn-primary mr-3" type="submit">
+                   <button class="btn btn-primary mr-3" [routerLink]="['/listaperfiles']" type="submit">
                     Crear
+                        
                    </button>
                    <button class="btn btn-primary" type="reset" (click)="resetForm(perfilForm)">
                     Reset
