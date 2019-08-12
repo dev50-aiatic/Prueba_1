@@ -11,7 +11,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import {AngularFireModule} from 'angularfire2';
 import  {environment} from '../environments/environment';
-import { AngularFireStorageModule } from '@angular/fire/storage';
+
 
 import { PerfilesComponent } from './components/perfiles/perfiles.component';
 import { PerfilComponent } from './components/perfiles/perfil/perfil.component';
