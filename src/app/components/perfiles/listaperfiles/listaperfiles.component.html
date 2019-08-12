@@ -1,0 +1,30 @@
+<div class="mt-5 container">
+    <div class="row">
+        
+         <div class="col-md-4">
+            <app-perfil></app-perfil> 
+        </div>
+        <div class="card col-md-8">
+            <div class="card-body table-responsive">
+                <h6 class="text-center">Lista de Usuarios</h6>
+                <table class="table table-hover">
+                    <tbody>
+                    <tr *ngFor="let Perfil of Listaperfiles">
+                        <td>  
+                            <a class="btn btn-secondary mr-3"  (click)="Editar(Perfil)">Ver o Editar</a>  
+                            <a class="btn btn-secondary" (click)="Borrar(Perfil.$key)">Borrar</a>
+                        </td>
+                        <td>{{Perfil.nombre}}</td>
+                        <td>{{Perfil.apellido}}</td>
+                        <td>{{Perfil.correo}}</td>
+                        
+                    </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+         </div>
+    </div>
+    
+</div>
+
