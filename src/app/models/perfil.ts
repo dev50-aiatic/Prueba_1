@@ -4,5 +4,5 @@ export class Perfil {
     apellido: string;
     correo: string;
     fecha: number;
-    avatar: string;
+    
 }

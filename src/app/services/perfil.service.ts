@@ -24,7 +24,7 @@ export class PerfilService {
       apellido: perfil.apellido,
       correo: perfil.correo,
       fecha: perfil.fecha,
-      avatar: perfil.avatar,
+     
     });
   }
   updatePerfil (perfil: Perfil)
@@ -34,7 +34,7 @@ export class PerfilService {
       apellido: perfil.apellido,
       correo: perfil.correo,
       fecha: perfil.fecha,
-      avatar: perfil.avatar,
+     
     });
   }
   eliminarPerfil ($key: string)
