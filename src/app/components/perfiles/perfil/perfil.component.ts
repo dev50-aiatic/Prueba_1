@@ -11,7 +11,7 @@ import { Perfil } from 'src/app/models/perfil';
 })
 export class PerfilComponent implements OnInit {
 
-  constructor(private perfilService: PerfilService,) { }
+  constructor(public perfilService: PerfilService,) { }
 
  
 
