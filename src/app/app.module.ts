@@ -19,6 +19,9 @@ import { ListaperfilesComponent } from './components/perfiles/listaperfiles/list
 
 import {PerfilService} from './services/perfil.service';
 
+import { Observable } from 'rxjs/internal/observable';
+import { Subscriber } from 'rxjs';
+
 const routes : Routes =  [
   { path: 'contacto', component: ContactoComponent},
   { path: 'footer', component: FooterComponent},
