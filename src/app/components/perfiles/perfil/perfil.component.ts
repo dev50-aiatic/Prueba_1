@@ -4,8 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Perfil } from 'src/app/models/perfil';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
-import { Observable } from 'rxjs/internal/observable';
-import { Subscriber } from 'rxjs';
+ 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
@@ -15,8 +14,7 @@ export class PerfilComponent implements OnInit {
 
   constructor(private perfilService: PerfilService, private storage: AngularFireStorage) { }
 
-  upLoadPercent: Observable<number>;
-  urlImage: Observable<string>;
+ 
 
   ngOnInit() {
     this.perfilService.getPerfil();
@@ -42,8 +40,7 @@ export class PerfilComponent implements OnInit {
     const filePath = 'uploads/profile_${id}';
     const ref = this.storage.ref(filePath);
     const task = this.storage.upload(filePath, file);
-    this.upLoadPercent = task.percentageChanges();
-    task.snapshotChanges().pipe(finalize(() => this.urlImage = ref.getDownloadURL())).subscribe();    
+
     
   }
 }

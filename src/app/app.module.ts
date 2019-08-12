@@ -20,7 +20,7 @@ import { ListaperfilesComponent } from './components/perfiles/listaperfiles/list
 import {PerfilService} from './services/perfil.service';
 
 import { Observable } from 'rxjs/internal/observable';
-import { Subscriber } from 'rxjs';
+import { Subscriber, observable } from 'rxjs';
 
 const routes : Routes =  [
   { path: 'contacto', component: ContactoComponent},
@@ -48,7 +48,10 @@ const routes : Routes =  [
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    Observable,
+    Subscriber,
+    
   ],
   providers: [
     PerfilService
