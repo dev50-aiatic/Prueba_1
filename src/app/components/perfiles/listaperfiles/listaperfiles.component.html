@@ -1,4 +1,4 @@
-<div class="container">
+<div class="section">
     <div class="row">
         
          <div class="col-md-4">
@@ -11,8 +11,8 @@
                     <tbody>
                     <tr *ngFor="let Perfil of Listaperfiles">
                         <td>  
-                            <a class="btn btn-secondary mr-3"  (click)="Editar(Perfil)">Ver o Editar</a>  
-                            <a class="btn btn-secondary" (click)="Borrar(Perfil.$key)">Borrar</a>
+                            <a class="btn btn-primary mr-3"  (click)="Editar(Perfil)">Ver o Editar</a>  
+                            <a class="btn btn-danger" (click)="Borrar(Perfil.$key)">Borrar</a>
                         </td>
                         <td>{{Perfil.nombre}}</td>
                         <td>{{Perfil.apellido}}</td>
@@ -27,4 +27,3 @@
     </div>
     
 </div>
-

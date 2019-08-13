@@ -9,15 +9,21 @@ import { ContactoComponent } from './contacto/contacto.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { AngularFireDatabaseModule} from 'angularfire2/database';
-import {AngularFireModule} from 'angularfire2';
+import { AngularFireModule} from 'angularfire2';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import  {environment} from '../environments/environment';
+
 
 
 import { PerfilesComponent } from './components/perfiles/perfiles.component';
 import { PerfilComponent } from './components/perfiles/perfil/perfil.component';
-import { ListaperfilesComponent } from './components/perfiles/listaperfiles/listaperfiles.component';
+
 
 import {PerfilService} from './services/perfil.service';
+import { ListaperfilesComponent } from './components/perfiles/listaperfiles/listaperfiles.component';
 
 
 
@@ -27,6 +33,7 @@ const routes : Routes =  [
   { path: '', component: FooterComponent},
   { path: 'perfil', component:PerfilComponent},
   { path: 'listaperfiles', component:ListaperfilesComponent}
+  
   
   ];
 
@@ -40,6 +47,7 @@ const routes : Routes =  [
     PerfilComponent,
     ListaperfilesComponent,
     
+    
   ],
   imports: [
     BrowserModule,
@@ -47,12 +55,15 @@ const routes : Routes =  [
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
+    AngularFireStorageModule,
+    ReactiveFormsModule
    
     
     
   ],
   providers: [
-    PerfilService
+    PerfilService,
+    AngularFirestore
   ],
   bootstrap: [AppComponent]
 })

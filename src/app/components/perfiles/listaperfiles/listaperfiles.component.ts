@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PerfilService } from '../../../services/perfil.service';
 import { Perfil } from '../../../models/perfil';
 
+
 @Component({
   selector: 'app-listaperfiles',
   templateUrl: './listaperfiles.component.html',
@@ -11,9 +12,7 @@ export class ListaperfilesComponent implements OnInit {
 
   Listaperfiles: Perfil[];
 
-  constructor(
-    private perfilService: PerfilService
-  )  {}
+  constructor(private perfilService: PerfilService) { }
 
   ngOnInit() {
     this.perfilService.getPerfil()
