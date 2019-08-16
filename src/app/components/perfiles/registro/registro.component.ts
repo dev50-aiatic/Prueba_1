@@ -35,7 +35,7 @@ export class RegistroComponent implements OnInit {
   urlImage: Observable<string>;
   public email: string = '';
   public password: string = '';
-
+  public nombre: string = '';
   ngOnInit() {
     
     this.Service.getPerfil();
