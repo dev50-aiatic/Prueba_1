@@ -1,69 +1,67 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule} from '@angular/forms';
-
 import { AppComponent } from './app.component';
-import { EncabezadoComponent } from './encabezado/encabezado.component';
-import { FooterComponent } from './footer/footer.component';
-import { ContactoComponent } from './contacto/contacto.component';
 
-import { RouterModule, Routes } from '@angular/router';
+import { NgModule, Component } from '@angular/core';
+import { FormsModule} from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+
 import { AngularFireDatabaseModule} from 'angularfire2/database';
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 import  {environment} from '../environments/environment';
 
-
-
+import { LoginComponent } from './components/perfiles/login/login.component';
+import { RegistroComponent } from './components/perfiles/registro/registro.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 import { PerfilesComponent } from './components/perfiles/perfiles.component';
 import { PerfilComponent } from './components/perfiles/perfil/perfil.component';
-
-
+import { AuthGuard } from './guard/auth.guard';
 import {PerfilService} from './services/perfil.service';
-import { ListaperfilesComponent } from './components/perfiles/listaperfiles/listaperfiles.component';
-
-
 
 const routes : Routes =  [
-  { path: 'contacto', component: ContactoComponent},
-  { path: 'footer', component: FooterComponent},
-  { path: '', component: FooterComponent},
-  { path: 'perfil', component:PerfilComponent},
-  { path: 'listaperfiles', component:ListaperfilesComponent}
-  
-  
+ 
+  { path: 'perfil', component:PerfilComponent, canActivate: [AuthGuard]},
+  { path: 'registro', component: RegistroComponent}, 
+  { path: 'login', component: LoginComponent},
+  { path: 'menu', component: MenuComponent},
+  { path: 'inicio', component: InicioComponent},
+  { path: 'perfiles', component: PerfilesComponent},
+  { path: '', component: LoginComponent}
   ];
-
+  
 @NgModule({
   declarations: [
     AppComponent,
-    EncabezadoComponent,
-    FooterComponent,
-    ContactoComponent,
     PerfilesComponent,
     PerfilComponent,
-    ListaperfilesComponent,
+    LoginComponent,
+    RegistroComponent,
+    MenuComponent,
+    InicioComponent,
     
     
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes),
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(environment.firebase),
     FormsModule,
     AngularFireStorageModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule.forRoot(routes)
    
     
     
   ],
   providers: [
     PerfilService,
-    AngularFirestore
+    AngularFirestore,
+    AngularFireAuth
   ],
   bootstrap: [AppComponent]
 })

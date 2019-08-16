@@ -1,0 +1,98 @@
+
+    <div class="container mt-5" >
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
+          <div>
+          <div class="card">
+            <div class="card-body text-center">
+                <form #formRegister="ngForm" (ngSubmit)="onAddUser()">
+
+                  <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
+                    
+                  <div class="alert alert-danger" role="alert" *ngIf="isError">
+                      {{msgError}}
+                  </div>
+                  <div class="form-group">
+                    <input 
+                        type="email"  
+                        name="email"
+                        class="form-control" 
+                        [(ngModel)]="email"
+                        placeholder="Email" 
+                        required minlength="8">
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="email.touched && !email.valid">
+                    <div *ngIf="email.errors.required">Email is required</div>
+                    <div *ngIf="email.errors.minlength">Email must be at least 8 characters</div>
+                  </div>
+                  
+                  <div>
+                        <input 
+                        type="password" 
+                        name="password" 
+                        class="form-control" 
+                        placeholder="password" 
+                        [(ngModel)]="password" 
+                        required minlength="5"
+                        maxlength="10">
+                  </div>
+                  <div class="alert alert-danger" role="alert" *ngIf="password.touched && !password.valid">
+                    <div *ngIf="password.errors.required">Password is required</div>
+                    <div *ngIf="password.errors.minlength">Password must be at least 5 characters</div>
+                  </div>
+                     <hr>
+                  <div class="form-group">
+                       <input 
+                        #nombreUsuario 
+                        type="text" 
+                        name="name" 
+                        [(ngModel)]="nombre"
+                        class="form-control" 
+                        placeholder="Nombre">         
+                  </div>
+                  
+                  <hr>
+                 
+                  <div class="form group input-group">
+                      
+                      <div class="form-group custom-file">
+                          
+                             <input 
+                             type="file" 
+                             accept=".png, .jpg" 
+                             (change)="onUpload($event)"
+                             class="custom-file-input"
+                             data-icon="false"
+                             aria-describedby="inputGroupFileAddon04">
+                             <label class="custom-file-label" for="inputGroupFile04">Avatar</label>  
+                        </div>
+                  </div>
+                  
+                    <div class="progress ">
+                      <div [style.visibility]="(uploadPercent == 0) ? 'hidden' : 'visible'" class="progress-bar progress-bar-striped bg-success"
+                        role="progressbar" [style.width]="(uploadPercent | async) +'%'">
+                    </div>
+                  </div>
+                      <br>
+                      <input 
+                      #imageUser 
+                      type="hidden" 
+                      [value]="urlImage | async">
+                      <button *ngIf="urlImage | async; else btnDisabled" type="submit" class="btn btn-lg btn-primary btn-block">Register</button>
+                      <ng-template #btnDisabled>
+                        <button type="submit" disabled=true class="btn btn-lg btn-secondary btn-block">Registrar</button>
+                      </ng-template>
+                  <div class="form-group">
+                    <a routerLink="/login" class="form-control login-user">Ya esta registrado?</a>
+                  </div>
+                  
+                </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

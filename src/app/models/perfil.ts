@@ -1,8 +1,9 @@
+
 export class Perfil {
-    $key: string;
-    nombre?: string;
-    apellido?: string;
-    correo?: string;
-    fecha?: number;
-   
-}
+    $key?: string;
+    id?: string;
+    name?: string;
+    email?: string;
+    password?: string;
+    photoUrl?: string;
+  }

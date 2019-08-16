@@ -1,80 +1,25 @@
-        <div class="card mt-5">
-                        <div class="card-body"> 
-                        <form #perfilForm="ngForm" (ngSubmit)="onSubmit(perfilForm)" >  
-                                <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="perfilService.seleccionarPerfil.$key">
-                                <div class="form-group">
-                                        <h6>Nombre:</h6>
-                                <input
-                                        type="text"
-                                        class="form-control"
-                                        name="nombre"
-                                        #name="ngModel"
-                                        [(ngModel)]="perfilService.seleccionarPerfil.nombre"
-                                        placeholder="Ingrese su nombre"
-                                >
-                        </div>
-                        <div class="form-group">
-                                <h6>Apellido:</h6>
-                                <input
-                                        type="text"
-                                        class="form-control"
-                                        name="apellido"
-                                        #apellido="ngModel"
-                                        [(ngModel)]="perfilService.seleccionarPerfil.apellido"
-                                        placeholder="Ingrese su apellido"
-                                        >
-                        </div>
-                        <div class="form-group">
-                                <h6>Correo:</h6>
-                                <input
-                                        type="text"
-                                        class="form-control"
-                                        name="correo"
-                                        #correo="ngModel"
-                                        [(ngModel)]="perfilService.seleccionarPerfil.correo"
-                                        placeholder="Ingrese su correo"
-                                        >
-                        </div>
-                        <div class="form-group ">
-                                <h6>Fecha de nacimiento:</h6>
-                                <input
-                                        type="date"
-                                        class="form-control"
-                                        name="fecha"
-                                        #fecha="ngModel"
-                                        [(ngModel)]="perfilService.seleccionarPerfil.fecha"
-                                        placeholder="Ingrese su fecha de nacimiento"
-                                        >
-                                        
-                        </div>
-                        <div>
-                                        <form [formGroup]="formTemplate" (submit)="oonSubmit(formTemplate.value)">
-                                                        <div class=" img-fluid text-center">
-                                                                <img [src]="imgSrc" width="250px" height="250px" alt="Responsive image" (click)="fileUploader.click()">                       
-                                                        </div>
-                                                        <div class="form-group">
-                                                                <label>Avatar:</label>
-                                                                <input type="file" accept="image/*" class="form-control" #fileUploader formControlName="imageUrl"
-                                                                (change)="showPreview($event)">
-                                                                <div class="text-danger" *ngIf="isSubmitted && formControls.imageUrl.errors?.required">This field is required.
-                                                                </div>
-                                                </div>
-                                        </form>
-                        </div>
-                        
-                        
-                                <div>
-                                <button class="btn btn-primary mr-3" type="submit" >
-                                Crear
-                                        
-                                </button>
-                                <button class="btn btn-primary" type="reset" (click)="resetForm(perfilForm)">
-                                Reset
-                                </button>
-                                </div>
-                        
-                        </form>
-                        </div>
-                        
-                </div>
-    
+<section id="profile" >
+    <div class="container">
+      <h1>hola</h1>
+    </div>
+    <div class="row mt-5">
+      <div class="offset-lg-4 col-lg-4 col-sm-6 col-12 main-section text-center card">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12 col-12 profile-header"></div>
+        </div>
+        <div class="row user-details">
+          <div class="col-12">
+            <img src="{{user.photoUrl}}" class=" img-thumbnail" alt="profile">
+            <label><h5>{{user.name}}</h5></label>
+            
+            <p>
+              {{user.email}}
+            </p>
+  
+            <hr>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
