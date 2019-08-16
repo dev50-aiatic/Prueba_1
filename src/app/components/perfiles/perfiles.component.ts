@@ -28,39 +28,15 @@ export class PerfilesComponent implements OnInit {
   })
   constructor(public perfilService: PerfilService,private storage: AngularFireStorage) { }
 
-uploadPercent: Observable<number>;
-urlImage: Observable<string>;
 
   ngOnInit() { 
-    this.rresetForm();
+    
   }
   
-  showPreview(event: any) {
-    if (event.target.files && event.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (e: any) => this.imgSrc = e.target.result;
-      reader.readAsDataURL(event.target.files[0]);
-      this.selectedImage = event.target.files[0];
-    }
-    else {
-      this.imgSrc = 'assets/img/image_placeholder.jpg';
-      this.selectedImage = null;
-    }
-  }
+  
  
   get formControls() {
     return this.formTemplate['controls'];
   }
-  rresetForm() {
-    this.formTemplate.reset();
-    this.formTemplate.setValue({
-  
-      caption: '',
-      imageUrl: '',
-      category: 'Animal'
-    });
-    this.imgSrc = '/assets/img/image_placeholder.jpg';
-    this.selectedImage = null;
-    this.isSubmitted = false;
-  }
+ 
 }
