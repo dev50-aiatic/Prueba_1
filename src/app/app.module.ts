@@ -25,7 +25,7 @@ import {PerfilService} from './services/perfil.service';
 
 const routes : Routes =  [
  
-  { path: 'perfil', component:PerfilComponent, canActivate: [AuthGuard]},
+  { path: 'perfil', component:PerfilComponent,},
   { path: 'registro', component: RegistroComponent}, 
   { path: 'login', component: LoginComponent},
   { path: 'menu', component: MenuComponent},
@@ -53,13 +53,13 @@ const routes : Routes =  [
     FormsModule,
     AngularFireStorageModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    
    
     
     
   ],
   providers: [
-    
     AngularFirestore,
     AngularFireAuth
   ],

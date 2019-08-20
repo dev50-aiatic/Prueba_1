@@ -1,14 +1,7 @@
 import { Injectable } from '@angular/core';
-import {AngularFireDatabase,AngularFireList} from 'angularfire2/database'
-import { AngularFireAuth } from '@angular/fire/auth';
-import { map } from 'rxjs/operators';
-import { auth } from 'firebase/app';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Perfil } from '../models/perfil';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { finalize } from 'rxjs/operators';
-import { Observable } from 'rxjs/internal/Observable';
+import { login } from '../models/login';
+
 
 
 @Injectable({
@@ -16,61 +9,55 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class PerfilService {
 
-  imageDetailList: AngularFireList<any>;
-  perfilList: AngularFireList<any>;
-  seleccionarPerfil: Perfil = new Perfil();
 
-  constructor(private firebase: AngularFireDatabase,private afsAuth: AngularFireAuth, private afs: AngularFirestore,) { }
-  getPerfil(){
-    return this.perfilList = this.firebase.list('perfiles');
+
+  constructor() { }
+  status :boolean =false;
+  usuarios : Perfil [] = [/* new usuario("sandro","latam", '2019-01-16',"12345",1202212), 
+  new usuario("ivan","latam1", "2019-01-16","12345",110123) */];
+  usuarioServicio:Perfil;
+  
+  /* @Output() estadocomp = new EventEmitter<boolean>(); */
+
+  onValidacionPersona(persona1:login){
+      console.log("el nick es: "+persona1.usuario+"\nla contraseña es:"+persona1.contraseña);
   }
-  registerUser(email: string, pass: string) {
-    return new Promise((resolve, reject) => {
-      this.afsAuth.auth.createUserWithEmailAndPassword(email, pass)
-        .then(userData => {
-          resolve(userData),
-            this.updateUserData(userData.user)
-        }).catch(err => console.log(reject(err)))
-    });
+  onValidacion(persona2:login){
+      this.usuarios.forEach(element => {
+          if(element.usuario === persona2.usuario){
+              if(element.contraseña === persona2.contraseña){
+                  this.usuarioServicio = element;
+                  this.status = true;
+              }
+          }else{
+              console.log("error");
+              
+          }
+          
+      });
   }
-  loginEmailUser(email: string, pass: string) {
-    return new Promise((resolve, reject) => {
-      this.afsAuth.auth.signInWithEmailAndPassword(email, pass)
-        .then(userData => resolve(userData),
-        err => reject(err));
-    });
+  onAgregar(usuario1:Perfil){
+      this.usuarios.push(usuario1);
   }
-  loginFacebookUser() {
-    return this.afsAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
-      .then(credential => this.updateUserData(credential.user))
+  onModificar(usuarioMod:Perfil){
+      let indice = this.posicionamiento(Perfil);
+      console.log("el indice es"+indice);
   }
-  loginGoogleUser() {
-    return this.afsAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
-      .then(credential => this.updateUserData(credential.user))
-  }
-  logoutUser() {
-    return this.afsAuth.auth.signOut();
-  }
-  isAuth() {
-    return this.afsAuth.authState.pipe(map(auth => auth));
-  }
-  private updateUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const data: Perfil = {
-      id: user.uid,
-      email: user.email,    
-  }
-    return userRef.set(data, { merge: true })
-  }
-  crearPerfil (perfil: Perfil)
-  {
-    this.perfilList.push({
-      nombre: perfil.name,
-      email: perfil.email,
-      correo: perfil.password,
-    });
+  posicionamiento(usuarioPos){
+      console.log("el nombre que entra en el posicionamiento es: "+usuarioPos.nombre);
+      console.log("entra");
+      let contador =0;
+      this.usuarios.forEach(element => {
+          if(element.usuario===usuarioPos.nick){
+              console.log("el posicionamiento es"+contador);
+              return contador;
+          }
+          contador++;
+      });
+      return contador;
   }
 }
+
  
   
 

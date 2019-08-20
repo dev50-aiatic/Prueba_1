@@ -5,83 +5,45 @@
           <div>
           <div class="card">
             <div class="card-body text-center">
-                <form #formRegister="ngForm" (ngSubmit)="onAddUser()">
+                <div class="form-group">
 
                   <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
                     
                   
                   <div class="form-group">
-                    <input 
-                        type="email"  
-                        name="email"
-                        class="form-control" 
-                        [(ngModel)]="email"
-                        placeholder="Email" 
-                        required minlength="8">
+                      <input id="nombre" class="form-control" type="text" name="" required [(ngModel)]="nombre" placeholder="nombre">
                   </div>
                   
                   
                   <div>
-                        <input 
-                        type="password" 
-                        name="password" 
-                        class="form-control" 
-                        placeholder="password" 
-                        [(ngModel)]="password" 
-                        required minlength="5"
-                        maxlength="10">
+                      <input id="nick" class="form-control" type="text" required name="" [(ngModel)]="nick" placeholder="Usuario">
                   </div>
                 
                      <hr>
                   <div class="form-group">
-                       <input 
-                        #nombreUsuario 
-                        type="text" 
-                        name="Nombre" 
-                        [(ngModel)]="nombre"
-                        class="form-control" 
-                        placeholder="Nombre">         
+                      <input id="nacimiento" class="form-control" type="date" required name="" [(ngModel)]="nacimiento" placeholder="Fecha">       
                   </div>
                   
                   <hr>
                  
-                  <div class="form group input-group">
-                      
-                      <div class="form-group custom-file">
-                          
-                             <input 
-                             type="file" 
-                             accept=".png, .jpg" 
-                             (change)="onUpload($event)"
-                             class="custom-file-input"
-                             data-icon="false"
-                             aria-describedby="inputGroupFileAddon04">
-                             <label class="custom-file-label" for="inputGroupFile04">Avatar</label>  
-                        </div>
+                  <div>
+                          <input id="contraseña" class="form-control" type="password" required name="" [(ngModel)]="contrasena" placeholder="contraseña">
                   </div>
-                  
-                  
+                
                   
                   <div>
-                      <br>
-                      <input 
-                      #imageUser 
-                      type="hidden" 
-                      [value]="urlImage | async">
-                      
-                      
-                      
+                      <input id="identificacion" class="form-control" type="tel" required name="" [(ngModel)]="identificacion" placeholder="identificacion">
                   </div>
                   <div>
-                      <button type="submit"  class="btn btn-lg btn-secondary btn-block">Registrar</button>
+                      <button type="submit"  class="btn btn-lg btn-secondary btn-block" (click)="onAgregarUsuario()">Registrar</button>
           
                   </div>
                  
-                  <div class="form-group">
+                  <div >
                     <a routerLink="/login" class="form-control login-user">Ya esta registrado?</a>
                   </div>
                   
-                </form>
+                </div>
 
             </div>
           </div>

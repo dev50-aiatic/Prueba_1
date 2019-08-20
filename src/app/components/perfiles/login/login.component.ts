@@ -1,31 +1,35 @@
-import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
-import { Router } from '@angular/router';
+import { Component, OnInit, ViewChild, ElementRef, Output } from '@angular/core';
+import { login } from 'src/app/models/login';
 import { PerfilService } from '../../../services/perfil.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  @ViewChild ("nick",{static:false}) nickInput:ElementRef;
+  @ViewChild ("contraseña",{static:false}) contraseña:ElementRef;
+  @Output() estado = false;
 
-  constructor(public afAuth: AngularFireAuth, private router: Router, private authService: PerfilService) { }
-  public email: string = '';
-  public password: string = '';
+  constructor(private perfilogin:PerfilService,private router:Router) { }
+ 
   ngOnInit() {
   }
-  onLogin(): void {
-    this.authService.loginEmailUser(this.email, this.password)
-      .then((res) => {
-        this.onLoginRedirect();
-      }).catch(err => console.log('err', err.message));
-  }
-  onLogout() {
-    this.authService.logoutUser();
-  }
-  onLoginRedirect(): void {
-    this.router.navigate(['perfil']);
+  onValidarDatos(){
+    let persona1 = new login(this.nickInput.nativeElement.value,this.contraseña.nativeElement.value);
+    this.perfilogin.onValidacionPersona(persona1);
+    this.perfilogin.onValidacion(persona1);
+    this.estado = this.perfilogin.status;
+    console.log("el estado del status es: "+this.perfilogin.status);
+    if(this.estado===true){
+      console.log("atino");
+      this.router.navigate(['perfil']);
+    }else{
+      this.router.navigate(['/ingresar']);
+      alert("usuario o contraseña invalido");
+    }
+    
   }
 }
 

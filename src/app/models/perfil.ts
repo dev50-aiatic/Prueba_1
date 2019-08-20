@@ -1,9 +1,5 @@
 
-export class Perfil {
-    $key?: string;
-    id?: string;
-    name?: string;
-    email?: string;
-    password?: string;
-    photoUrl?: string;
-  }
+export class Perfil{
+constructor (public nombre:String, public usuario:String,public nacimiento:Date, public contraseña:String, public identificacion:number){}
+}
+ 
