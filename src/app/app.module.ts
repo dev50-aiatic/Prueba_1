@@ -59,7 +59,7 @@ const routes : Routes =  [
     
   ],
   providers: [
-    PerfilService,
+    
     AngularFirestore,
     AngularFireAuth
   ],
