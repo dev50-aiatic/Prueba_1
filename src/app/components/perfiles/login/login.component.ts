@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef, Output } from '@angular/core'
 import { login } from 'src/app/models/login';
 import { PerfilService } from '../../../services/perfil.service';
 import { Router } from '@angular/router';
+import { Perfil } from 'src/app/models/perfil';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
   constructor(private perfilogin:PerfilService,private router:Router) { }
  
   ngOnInit() {
+    this.perfilogin.obtenerUsuarios().subscribe((Perfil:Perfil[])=>{this.perfilogin.setUsuarios(Perfil)});
   }
   onValidarDatos(){
     let persona1 = new login(this.nickInput.nativeElement.value,this.contraseña.nativeElement.value);

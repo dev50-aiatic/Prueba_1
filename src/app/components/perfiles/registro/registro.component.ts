@@ -9,15 +9,16 @@ import { Perfil } from 'src/app/models/perfil';
 })
 export class RegistroComponent implements OnInit {
   usuarios:Perfil[] = [];
-  nombre:String;
-  nick:String;
+  nombre:string;
+  nick:string;
   nacimiento:Date;
-  contrasena:String;
+  contrasena:string;
   identificacion:number;
 
   constructor(private registroServices:PerfilService, private router: Router) { }
 
   ngOnInit() {
+    this.registroServices.obtenerUsuarios().subscribe((Perfil:Perfil[])=>{this.registroServices.setUsuarios(Perfil)});
     this.usuarios = this.registroServices.usuarios;
   }
   onAgregarUsuario(){

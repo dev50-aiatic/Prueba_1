@@ -22,6 +22,8 @@ import { PerfilesComponent } from './components/perfiles/perfiles.component';
 import { PerfilComponent } from './components/perfiles/perfil/perfil.component';
 import { AuthGuard } from './guard/auth.guard';
 import {PerfilService} from './services/perfil.service';
+import { HttpClientModule} from '@angular/common/http';
+import { BdService } from './services/bd.service';
 
 const routes : Routes =  [
  
@@ -54,6 +56,8 @@ const routes : Routes =  [
     AngularFireStorageModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
+    HttpClientModule
+
     
    
     
@@ -61,7 +65,10 @@ const routes : Routes =  [
   ],
   providers: [
     AngularFirestore,
-    AngularFireAuth
+    AngularFireAuth,
+    BdService,
+    PerfilService
+    
   ],
   bootstrap: [AppComponent]
 })
