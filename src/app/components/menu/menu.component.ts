@@ -10,18 +10,24 @@ import { Router } from '@angular/router';
 export class MenuComponent implements OnInit {
   estado = false;
   constructor(private menuService:PerfilService , private router:Router) { }
-  
-  
-  ngOnInit() {
-   
+    
+  ngOnInit() { 
   }
-  ngDoCheck(): void {
-   
-    this.estado= this.menuService.status;
 
+  ngDoCheck(): void {
+    this.estado= this.menuService.status;
   }
+
   Desconexion() {
-    this.estado = false;
+    this.menuService.status = false;
+    console.log(this.estado)
   }
+  
+  ToggleNavBar () {
+    let element: HTMLElement = document.getElementsByClassName( 'navbar-toggler' )[ 0 ] as HTMLElement;
+    if ( element.getAttribute( 'aria-expanded' ) == 'true' ) {
+        element.click();
+    }
+}
 }
 

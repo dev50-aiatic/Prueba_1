@@ -20,20 +20,23 @@ import { MenuComponent } from './components/menu/menu.component';
 import { InicioComponent } from './components/inicio/inicio.component';
 import { PerfilesComponent } from './components/perfiles/perfiles.component';
 import { PerfilComponent } from './components/perfiles/perfil/perfil.component';
-import { AuthGuard } from './guard/auth.guard';
-import {PerfilService} from './services/perfil.service';
+
+import { PerfilService} from './services/perfil.service';
 import { HttpClientModule} from '@angular/common/http';
 import { BdService } from './services/bd.service';
+import { TareasComponent } from './components/tareas/tareas.component';
+import { AuthGuard } from './guard/auth.guard';
+  
 
 const routes : Routes =  [
- 
-  { path: 'perfil', component:PerfilComponent,},
+  { path: '', component: LoginComponent},
+  { path: 'perfil', component:PerfilComponent, canActivate:[AuthGuard]},
   { path: 'registro', component: RegistroComponent}, 
   { path: 'login', component: LoginComponent},
   { path: 'menu', component: MenuComponent},
-  { path: 'inicio', component: InicioComponent},
-  { path: 'perfiles', component: PerfilesComponent},
-  { path: '', component: LoginComponent}
+  { path: 'inicio', component: InicioComponent, canActivate:[AuthGuard]},
+  { path: 'perfiles', component: PerfilesComponent,canActivate:[AuthGuard]},
+  { path: 'tareas', component: TareasComponent, canActivate:[AuthGuard]}
   ];
   
 @NgModule({
@@ -45,6 +48,7 @@ const routes : Routes =  [
     RegistroComponent,
     MenuComponent,
     InicioComponent,
+    TareasComponent,
     
     
   ],
@@ -67,7 +71,9 @@ const routes : Routes =  [
     AngularFirestore,
     AngularFireAuth,
     BdService,
-    PerfilService
+    PerfilService,
+    AuthGuard,
+
     
   ],
   bootstrap: [AppComponent]

@@ -3,6 +3,7 @@ import { Perfil } from '../models/perfil';
 import { login } from '../models/login';
 import { BdService } from './bd.service';
 import { Router} from '@angular/router';
+import { Identificacion} from '../models/identificacion';
 
 @Injectable({
   providedIn: 'root'
@@ -15,12 +16,12 @@ export class PerfilService {
   status :boolean =false;
   usuarios : Perfil [] = [];
   usuarioServicio:Perfil;
-  
+  valido : boolean = false;
   
   setUsuarios(usuariox:Perfil[]){
     this.usuarios = usuariox;
 }
-    obtenerUsuarios(){
+  obtenerUsuarios(){
     return this.bdservice.cargarPersonas();
     }
   onValidacionPersona(persona1:login){
@@ -40,6 +41,18 @@ export class PerfilService {
           
       });
   }
+ onValidacionid(id){
+    this.usuarios.forEach(element => {
+        if(element.identificacion === id){
+                this.valido = false;
+
+        }else{
+            this.valido = true;
+            console.log("el id es valido");  
+        }
+        
+    });
+ }
   onAgregar(usuario1:Perfil){
     if(this.usuarios == null){
         this.usuarios = [];
@@ -60,6 +73,14 @@ export class PerfilService {
           contador++;
       });
       return contador;
+  }
+  navegar(){
+    if(this.status){
+        return true;
+    }
+    else{
+        return false;
+    }
   }
 }
 

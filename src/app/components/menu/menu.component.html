@@ -1,33 +1,35 @@
+  <body data-spy="scroll" data-target="#sidebar" data-offset="60">
 
-<div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-lg-1 navbar-dark bg-dark sidebar-sticky fixed-top" id="sidebar">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark flex-lg-column">
+              <a class="navbar-brand" href="#">A&App</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <div class="navbar-nav flex-lg-column">
+                      <p  class="nav-item nav-link lead" *ngIf="estado" [routerLink]="['/inicio']" (click)="ToggleNavBar()">Inicio</p>
+                      <p  class="nav-item nav-link lead" *ngIf="estado" [routerLink]="['/perfil']" (click)="ToggleNavBar()">Perfil</p>
+                      <p  class="nav-item nav-link lead" *ngIf="estado" [routerLink]="['/tareas']" (click)="ToggleNavBar()">Tareas</p>
+                      <p  class="nav-item nav-link lead" *ngIf="estado" [routerLink]="['/ajustes']" (click)="ToggleNavBar()">Ajustes</p>
+                      <p  class="nav-item nav-link lead" *ngIf="estado" [routerLink]="['/login']" (click)="ToggleNavBar();Desconexion()">Salir</p>
+                </div>
       
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">|_(°o°)_/</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-      
-        </button>
-      
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item routerLinkActive=active" *ngIf="estado">
-                  <a class="nav-link" [routerLink]="['/inicio']" >Inicio</a>
-            </li>
-            <li class="nav-item routerLinkActive" *ngIf="estado" >
-                <a class="nav-link" [routerLink]="['/perfil']">Perfil</a>
-            </li>
-            <li class="nav-item routerLinkActive=active" *ngIf="estado" (click)="Desconexion()">
-                <a class="nav-link" [routerLink]="['/contacto']">Salir</a>
-            </li>
-            <li class="nav-item routerLinkActive=active" *ngIf="estado">
-                <a class="nav-link" [routerLink]="['/contacto']" >Tareas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" *ngIf="estado">Salir</a>
-            </li>
-          </ul>
           
-        </div>
-      </nav>
-</div>
+    </div>
+  </nav>
+  </div>
+
+  <hr/>
+  <div class="col-lg-9">
+    <div><p></p></div>
+        
+      
+  </div><!-- contenido -->
+  </div>
+  </div>
+
+  </body> 

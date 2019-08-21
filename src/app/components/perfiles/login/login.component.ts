@@ -26,9 +26,9 @@ export class LoginComponent implements OnInit {
     console.log("el estado del status es: "+this.perfilogin.status);
     if(this.estado===true){
       console.log("atino");
-      this.router.navigate(['perfil']);
+      this.router.navigate(['inicio']);
     }else{
-      this.router.navigate(['/ingresar']);
+      this.router.navigate(['/login']);
       alert("usuario o contraseña invalido");
     }
     
