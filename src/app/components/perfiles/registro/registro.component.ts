@@ -2,7 +2,7 @@ import { Component, OnInit, ElementRef, ViewChild, Input, Output } from '@angula
 import { PerfilService } from '../../../services/perfil.service';
 import { Router } from '@angular/router';
 import { Perfil } from 'src/app/models/perfil';
-import { identificacion } from 'src/app/models/identificacion';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.component.html',
