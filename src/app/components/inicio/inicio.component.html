@@ -1,7 +1,27 @@
-<div class="card mt-5">
-    <div class="card-body text-center">
-            <h1 class="display-4">Bienvenido kaio</h1>
-            <img src="http://giphygifs.s3.amazonaws.com/media/75aV5l5jM1BcI/giphy.gif" class="img-fluid" alt="Responsive image">
-    </div>    
- 
-</div>
+<section class="container-fluid fondo">
+    
+                <div class="row">
+                        <div class="col-md-4 mt-5">
+                                <div class="card fondocard">
+                                        <div class="card-body text-center">
+                                                <h1 class="display-4 titulo">Bienvenido {{usuarioPerfil.nombre}}</h1>
+                                                <hr>
+                                                <app-perfil></app-perfil>
+                                        </div>    
+                                     
+                                </div>
+                        
+                        </div>
+                        <div class="col-md-8 mt-5">
+                                <div class="card fondocardtwo">
+                                        <div class="card-body text-center">
+                                                <app-tareas></app-tareas>
+                                        </div>    
+                                     
+                                </div>
+                        </div>
+                        
+                        
+                    </div>
+    
+</section>
