@@ -28,7 +28,18 @@
                     <span class="fa fa-facebook"></span>
                     FACEBOOK
                   </button>
-                  
+                  <div *ngIf="user" class="card text-center">
+                    <h6 class="card-header">
+                      Social Login Demo
+                    </h6>
+                    <div class="card-block">
+                    <img class="card-img-top img-responsive photo" height="100" width="100" src="{{ user.photoUrl }}">
+                    </div>
+                    <div class="card-block">
+                      <h4 class="card-title">{{ user.name }}</h4>
+                      <p class="card-text">{{ user.email }}</p>
+                    </div>
+                  </div>
                 </form>
               </div>
                   
