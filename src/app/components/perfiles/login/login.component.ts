@@ -52,11 +52,11 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/login']);
       alert("usuario o contraseña invalido");
     }
-    
-  
   }
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    console.log(this.user);
+    
   }
 
   signOut(): void {
