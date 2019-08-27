@@ -42,10 +42,11 @@ let config = new AuthServiceConfig([
     provider: new FacebookLoginProvider("2461863594044970")
   }
 ]);
- 
-export function provideConfig() {
+  export function provideConfig() {
   return config;
 }
+ 
+
 
 const routes : Routes =  [
   { path: '', component: LoginComponent},
