@@ -94,23 +94,12 @@ export class PerfilService {
     else{
         return false;
     }
-  }
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-    this.authService.
-    
-
-  }
-
-  signOut(): void {
-    this.authService.signOut();
-    this.status = false;
-  }
+  
   
 
 }
 
  
   
-
+}
 
