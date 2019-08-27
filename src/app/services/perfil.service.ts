@@ -4,8 +4,8 @@ import { login } from '../models/login';
 import { BdService } from './bd.service';
 import { Router} from '@angular/router';
 import { Identificacion} from '../models/identificacion';
-
-
+import { AuthService } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 
 
 import { AngularFireAuth } from '@angular/fire/auth';
@@ -22,12 +22,20 @@ export class PerfilService {
 
 
 
-  constructor(private router:Router,private bdservice: BdService) { }
+  constructor(private router:Router,private bdservice: BdService,private authService: AuthService) { }
   status :boolean =false;
   usuarios : Perfil [] = [];
   usuarioServicio:Perfil;
   valido : boolean = false;
-  
+
+  public user: {};
+  public loggedIn: boolean;
+  ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
+    }
   setUsuarios(usuariox:Perfil[]){
     this.usuarios = usuariox;
 }
@@ -92,7 +100,13 @@ export class PerfilService {
         return false;
     }
   }
-  
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+
+  signOut(): void {
+    this.authService.signOut();
+  }
   
 
 }

@@ -54,13 +54,13 @@ export class LoginComponent implements OnInit {
     }
   }
   signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.perfilogin.signInWithFB();
     
     
   }
 
   signOut(): void {
-    this.authService.signOut();
+    this.perfilogin.signOut();
   }
   
 }
