@@ -10,7 +10,7 @@ import { Identificacion} from '../models/identificacion';
 
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
-import { auth } from 'firebase/app';
+
 
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
@@ -22,7 +22,7 @@ export class PerfilService {
 
 
 
-  constructor(private router:Router,private bdservice: BdService,private afsAuth: AngularFireAuth, private afs: AngularFirestore) { }
+  constructor(private router:Router,private bdservice: BdService) { }
   status :boolean =false;
   usuarios : Perfil [] = [];
   usuarioServicio:Perfil;
