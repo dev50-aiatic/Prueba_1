@@ -11,13 +11,11 @@ import { Perfil } from '../../models/perfil';
 })
 export class InicioComponent implements OnInit {
   usuarioPerfil:Perfil;
-  public user: {};
-  public loggedIn: boolean;
+  
 
   constructor(private perfilService:PerfilService, private router:Router) { }
     ngOnInit() {
       this.usuarioPerfil = this.perfilService.usuarioServicio;
-      this.user = this.perfilService.user;
-      console.log(this.user);
+      
   }
 }

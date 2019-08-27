@@ -32,8 +32,10 @@ export class LoginComponent implements OnInit {
   constructor(private perfilogin:PerfilService,private router:Router,private authService: AuthService,public _auth: AuthService) { }
  
   ngOnInit() {
-    
-  
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
     this.perfilogin.obtenerUsuarios().subscribe((Perfil:Perfil[])=>{this.perfilogin.setUsuarios(Perfil)});
   }
   onValidarDatos(){
@@ -51,13 +53,11 @@ export class LoginComponent implements OnInit {
     }
   }
   signInWithFB(): void {
-    this.perfilogin.signInWithFB();
-    this.router.navigate(['inicio']);
-    
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
 
   signOut(): void {
-    this.perfilogin.signOut();
+    this.authService.signOut();
   }
   
 }
