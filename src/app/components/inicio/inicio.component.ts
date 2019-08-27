@@ -18,6 +18,6 @@ export class InicioComponent implements OnInit {
     ngOnInit() {
       this.usuarioPerfil = this.perfilService.usuarioServicio;
       this.user = this.perfilService.user;
-    
+      console.log(this.user);
   }
 }

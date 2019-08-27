@@ -28,7 +28,7 @@ export class PerfilService {
   usuarioServicio:Perfil;
   valido : boolean = false;
 
-  public user: {};
+  user: {};
   public loggedIn: boolean;
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
