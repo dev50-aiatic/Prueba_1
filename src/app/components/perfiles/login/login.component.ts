@@ -26,8 +26,8 @@ export class LoginComponent implements OnInit {
   @Output() estado = false;
 
   
-  private user: {};
-  private loggedIn: boolean;
+  public user: {};
+  public loggedIn: boolean;
   
   constructor(private perfilogin:PerfilService,private router:Router,private authService: AuthService,public _auth: AuthService) { }
  
