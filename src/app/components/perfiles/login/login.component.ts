@@ -51,11 +51,14 @@ export class LoginComponent implements OnInit {
     }else{
       this.router.navigate(['/login']);
       alert("usuario o contraseña invalido");
+
     }
   }
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     this.estado = true;
+    this.router.navigate(['inicio']);
+
     
 
   }
