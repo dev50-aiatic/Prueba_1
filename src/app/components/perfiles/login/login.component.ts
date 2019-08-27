@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
   }
   signInWithFB(): void {
     this.perfilogin.signInWithFB();
+    this.estado = this.perfilogin.status;
     if(this.estado===true){
       console.log("atino");
       this.router.navigate(['inicio']);
