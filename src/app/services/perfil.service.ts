@@ -23,14 +23,19 @@ export class PerfilService {
 
 
   constructor(private router:Router,private bdservice: BdService,private authService: AuthService) { }
-  status :boolean =false;
+  status :boolean = false;
   usuarios : Perfil [] = [];
   usuarioServicio:Perfil;
   valido : boolean = false;
 
   user: {};
   public loggedIn: boolean;
-  
+  ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+     
+    });
+    }
   setUsuarios(usuariox:Perfil[]){
     this.usuarios = usuariox;
 }
@@ -95,7 +100,16 @@ export class PerfilService {
         return false;
     }
   }
-  
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.status = true;
+
+  }
+
+  signOut(): void {
+    this.authService.signOut();
+    this.status = false;
+  }
   
 
 }

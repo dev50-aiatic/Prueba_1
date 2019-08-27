@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
     });
+  
     this.perfilogin.obtenerUsuarios().subscribe((Perfil:Perfil[])=>{this.perfilogin.setUsuarios(Perfil)});
   }
   onValidarDatos(){
@@ -53,11 +54,18 @@ export class LoginComponent implements OnInit {
     }
   }
   signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.perfilogin.signInWithFB();
+    if(this.estado===true){
+      console.log("atino");
+      this.router.navigate(['inicio']);
+    }else{
+      this.router.navigate(['/login']);
+      alert("usuario invalido");
+    }
   }
 
   signOut(): void {
-    this.authService.signOut();
+    this.perfilogin.signOut();
   }
   
 }
