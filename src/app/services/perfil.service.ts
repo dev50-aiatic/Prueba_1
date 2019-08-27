@@ -30,12 +30,7 @@ export class PerfilService {
 
   user: {};
   public loggedIn: boolean;
-  ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.status = (user != null);
-    });
-    }
+  
   setUsuarios(usuariox:Perfil[]){
     this.usuarios = usuariox;
 }
@@ -102,6 +97,7 @@ export class PerfilService {
   }
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.authService.
     
 
   }

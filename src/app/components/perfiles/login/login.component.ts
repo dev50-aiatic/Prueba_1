@@ -54,21 +54,15 @@ export class LoginComponent implements OnInit {
     }
   }
   signInWithFB(): void {
-    this.perfilogin.signInWithFB();
-    this.estado = this.perfilogin.status;
-    if(this.estado===true){
-      console.log("atino");
-      this.router.navigate(['inicio']);
-      console.log(this.estado);
-    }else{
-      this.router.navigate(['/login']);
-      alert("usuario invalido");
-      console.log(this.estado);
-    }
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    this.estado = true;
+    
+
   }
 
   signOut(): void {
-    this.perfilogin.signOut();
+    this.authService.signOut();
+    this.estado = false;
   }
   
 }
