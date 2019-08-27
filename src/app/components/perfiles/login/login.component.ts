@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
   }
   signInWithFB(): void {
     this.perfilogin.signInWithFB();
-    
+    this.router.navigate(['inicio']);
     
   }
 
