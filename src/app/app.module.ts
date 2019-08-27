@@ -32,8 +32,6 @@ import { AuthGuard } from './guard/auth.guard';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
 
-import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { AngularFireAuthModule } from 'angularfire2/auth';
 
 let config = new AuthServiceConfig([
   
@@ -88,7 +86,6 @@ const routes : Routes =  [
   ],
   providers: [
     AngularFirestore,
-    AngularFireAuth,
     BdService,
     PerfilService,
     AuthGuard,

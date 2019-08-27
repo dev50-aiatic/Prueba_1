@@ -7,14 +7,13 @@ import { AuthService } from "angularx-social-login";
 
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
-import { AngularFireAuth } from '@angular/fire/auth';
+
 import { map } from 'rxjs/operators';
 import { auth } from 'firebase/app';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +29,7 @@ export class LoginComponent implements OnInit {
   private user: {};
   private loggedIn: boolean;
   
-  constructor(private perfilogin:PerfilService,private router:Router,private authService: AuthService,private afsAuth: AngularFireAuth,public _auth: AuthService) { }
+  constructor(private perfilogin:PerfilService,private router:Router,private authService: AuthService,public _auth: AuthService) { }
  
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
