@@ -36,13 +36,10 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 let config = new AuthServiceConfig([
-  {
-    id: GoogleLoginProvider.PROVIDER_ID,
-    provider: new GoogleLoginProvider("Google-OAuth-Client-Id")
-  },
+  
   {
     id: FacebookLoginProvider.PROVIDER_ID,
-    provider: new FacebookLoginProvider("Facebook-App-Id")
+    provider: new FacebookLoginProvider("2461863594044970")
   }
 ]);
  
@@ -83,7 +80,8 @@ const routes : Routes =  [
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
-    SocialLoginModule
+    SocialLoginModule,
+    SocialLoginModule.initialize(config)
 
   
   ],

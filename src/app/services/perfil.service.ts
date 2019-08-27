@@ -92,19 +92,8 @@ export class PerfilService {
         return false;
     }
   }
-  loginFacebookUser() {
-    return this.afsAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
-      .then(credential => this.updateUserData(credential.user))
-  }
-  private updateUserData(user) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    const data: Perfil = {
-      identificacion: user.id,
-      usuario: user.email,
-      
-    }
-    return userRef.set(data, { merge: true })
-  }
+  
+  
 
 }
 

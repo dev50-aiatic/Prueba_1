@@ -4,14 +4,12 @@ import { PerfilService } from '../../../services/perfil.service';
 import { Router } from '@angular/router';
 import { Perfil } from 'src/app/models/perfil';
 import { AuthService } from "angularx-social-login";
+
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
-
 import { AngularFireAuth } from '@angular/fire/auth';
 import { map } from 'rxjs/operators';
 import { auth } from 'firebase/app';
-
-
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
@@ -28,14 +26,18 @@ export class LoginComponent implements OnInit {
   @ViewChild ("contraseña",{static:false}) contraseña:ElementRef;
   @Output() estado = false;
 
-  private user: SocialUser;
+  
+  private user: {};
   private loggedIn: boolean;
- 
-
-  constructor(private perfilogin:PerfilService,private router:Router,private authService: PerfilService,private afsAuth: AngularFireAuth) { }
+  
+  constructor(private perfilogin:PerfilService,private router:Router,private authService: AuthService,private afsAuth: AngularFireAuth,public _auth: AuthService) { }
  
   ngOnInit() {
-    
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+    });
+  
     this.perfilogin.obtenerUsuarios().subscribe((Perfil:Perfil[])=>{this.perfilogin.setUsuarios(Perfil)});
   }
   onValidarDatos(){
@@ -54,14 +56,13 @@ export class LoginComponent implements OnInit {
     
   
   }
-  onLoginFacebook(): void {
-    this.authService.loginFacebookUser()
-      .then((res) => {
-        this.onLoginRedirect();
-      }).catch(err => console.log('err', err.message));
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
   }
-  onLoginRedirect(): void {
-    this.router.navigate(['inicio']);
+
+  signOut(): void {
+    this.authService.signOut();
   }
+  
 }
 
