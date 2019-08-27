@@ -5,6 +5,16 @@ import { BdService } from './bd.service';
 import { Router} from '@angular/router';
 import { Identificacion} from '../models/identificacion';
 
+
+
+
+import { AngularFireAuth } from '@angular/fire/auth';
+import { map } from 'rxjs/operators';
+import { auth } from 'firebase/app';
+
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -12,7 +22,7 @@ export class PerfilService {
 
 
 
-  constructor(private router:Router,private bdservice: BdService) { }
+  constructor(private router:Router,private bdservice: BdService,private afsAuth: AngularFireAuth, private afs: AngularFirestore) { }
   status :boolean =false;
   usuarios : Perfil [] = [];
   usuarioServicio:Perfil;
@@ -82,6 +92,20 @@ export class PerfilService {
         return false;
     }
   }
+  loginFacebookUser() {
+    return this.afsAuth.auth.signInWithPopup(new auth.FacebookAuthProvider())
+      .then(credential => this.updateUserData(credential.user))
+  }
+  private updateUserData(user) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const data: Perfil = {
+      identificacion: user.id,
+      usuario: user.email,
+      
+    }
+    return userRef.set(data, { merge: true })
+  }
+
 }
 
  

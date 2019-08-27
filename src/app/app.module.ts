@@ -12,6 +12,8 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth';
 
+
+
 import  {environment} from '../environments/environment';
 
 import { LoginComponent } from './components/perfiles/login/login.component';
@@ -26,7 +28,27 @@ import { HttpClientModule} from '@angular/common/http';
 import { BdService } from './services/bd.service';
 import { TareasComponent } from './components/tareas/tareas.component';
 import { AuthGuard } from './guard/auth.guard';
-  
+
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("Google-OAuth-Client-Id")
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("Facebook-App-Id")
+  }
+]);
+ 
+export function provideConfig() {
+  return config;
+}
 
 const routes : Routes =  [
   { path: '', component: LoginComponent},
@@ -60,12 +82,10 @@ const routes : Routes =  [
     AngularFireStorageModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes),
-    HttpClientModule
+    HttpClientModule,
+    SocialLoginModule
 
-    
-   
-    
-    
+  
   ],
   providers: [
     AngularFirestore,
@@ -73,6 +93,11 @@ const routes : Routes =  [
     BdService,
     PerfilService,
     AuthGuard,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+    
 
     
   ],
