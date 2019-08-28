@@ -27,7 +27,7 @@ export class PerfilService {
   
   signOut(): void {
     this.authService.signOut();
-    this.router.navigate(['/login'])
+    this.status = false;
   }
 
   verificacion(){
