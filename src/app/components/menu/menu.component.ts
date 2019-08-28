@@ -28,7 +28,7 @@ export class MenuComponent implements OnInit {
   }
 
   Desconexion() {
-    console.log('entro como quiso');
+    console.log('Salio');
     this.menuService.signOut();
   }
   
