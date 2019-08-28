@@ -13,7 +13,7 @@ import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-logi
 export class PerfilService {
   constructor(private router:Router,private bdservice: BdService,private authService: AuthService) { }
   
-  status :boolean = false;
+  status = false;
   usuarios : Perfil [] = [];
   usuarioServicio:Perfil;
   valido : boolean = false;
@@ -68,7 +68,7 @@ export class PerfilService {
               if(element.contrasena === persona2.contrasena){
                   this.usuarioServicio = element;
                   this.status = true;
-                  this.loggedIn = true;
+                  
               }
           }else{
               console.log("error");   

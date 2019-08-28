@@ -19,9 +19,7 @@ export class MenuComponent implements OnInit {
   constructor(private menuService:PerfilService , private router:Router) { }
     
   ngOnInit() { 
-    this.menuService.verificacion();
-    this.estado = this.menuService.loggedIn;
-
+ 
     this.menuService.inicioSesion();
     this.user = this.menuService.user;
     this.loggedIn = this.menuService.loggedIn;
@@ -29,15 +27,13 @@ export class MenuComponent implements OnInit {
 
   ngDoCheck(): void {
     this.menuService.verificacion();
-    this.estado = this.menuService.loggedIn;
+    this.estado = this.menuService.status;
   }
 
   Desconexion() {
     console.log('Salio');
     this.menuService.signOut();
-    this.router.navigate(['/login'])
-    this.menuService.loggedIn = false;
-    this.menuService.status = false;
+    
   }
   
   ToggleNavBar () {

@@ -52,6 +52,7 @@ export class LoginComponent implements OnInit {
     if(this.estado===true){
       console.log("atino");
       this.router.navigate(['inicio']);
+      console.log(this.estado)
     }else{
       this.router.navigate(['/login']);
       alert("usuario o contraseña invalido");

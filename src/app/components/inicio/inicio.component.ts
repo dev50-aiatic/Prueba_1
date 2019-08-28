@@ -20,6 +20,10 @@ export class InicioComponent implements OnInit {
 
   constructor(private perfilService:PerfilService, private router:Router) { }
     ngOnInit() {
+      if(this.perfilService.status==true){
+        this.router.navigate(['/inicio'])
+      
+      }
       this.usuarioPerfil = this.perfilService.usuarioServicio;
       if(this.perfilService.identificacionCuenta()=='interno'){
         this.usuarioPerfil = this.perfilService.usuarioServicio;
@@ -31,5 +35,14 @@ export class InicioComponent implements OnInit {
         this.tipoCuenta = false;
     }
       
+  }
+  ngDoCheck(): void {
+    //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
+    //Add 'implements DoCheck' to the class.
+    this.estado = this.perfilService.status;
+    this.usuarioPerfil = this.perfilService.usuarioServicio;
+    if(this.estado===false){
+      this.router.navigate(['/login']);
+    }
   }
 }
