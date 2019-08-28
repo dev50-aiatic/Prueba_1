@@ -33,8 +33,9 @@ export class PerfilService {
 
   verificacion(){
     this.loggedIn = (this.user != null);
-      if(this.loggedIn === true){
+      if(this.loggedIn == true){
         this.status = this.loggedIn;
+        console.log(this.status);
       }
     
   }

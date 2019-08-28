@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
     
   ngOnInit() { 
  
-    //this.menuService.inicioSesion();
+    this.menuService.inicioSesion();
     this.user = this.menuService.user;
     this.loggedIn = this.menuService.loggedIn;
     this.estado = this.menuService.status;
