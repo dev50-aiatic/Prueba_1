@@ -33,7 +33,10 @@ export class PerfilService {
 
   verificacion(){
     this.loggedIn = (this.user != null);
-    this.status = this.loggedIn;
+      if(this.loggedIn === true){
+        this.status = this.loggedIn;
+      }
+    
   }
 
   identificacionCuenta(){
