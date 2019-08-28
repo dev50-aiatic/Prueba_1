@@ -65,6 +65,9 @@ export class LoginComponent implements OnInit {
   signInWithFB(): void {
     this.perfilogin.signInWithFB();
    }
+  signInWithGG():void {
+    this.perfilogin.signInWithGoogle();
+  }
   
 }
 

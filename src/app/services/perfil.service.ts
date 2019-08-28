@@ -25,6 +25,9 @@ export class PerfilService {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
     
   }
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
   
   signOut(): void {
     this.authService.signOut();
