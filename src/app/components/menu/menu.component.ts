@@ -40,6 +40,8 @@ export class MenuComponent implements OnInit {
     console.log('Salio');
     this.menuService.signOut();
     this.router.navigate(['/login'])
+    this.menuService.loggedIn = false;
+    this.menuService.status = false;
   }
   
   ToggleNavBar () {
