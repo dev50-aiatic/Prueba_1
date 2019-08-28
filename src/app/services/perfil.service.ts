@@ -45,9 +45,8 @@ export class PerfilService {
       if(this.usuarioServicio != null){
         this.status = true;
       }
-      if(this.usuarioServicio = null){
-        this.status = false;
-      }
+      
+      
       
   }
 
