@@ -41,8 +41,12 @@ export class PerfilService {
       if(this.loggedIn == true){
         this.status = this.loggedIn;
         console.log(this.status);
-      }else if(this.usuarioServicio != null){
-        this.status = this.loggedIn;
+      }
+      if(this.usuarioServicio != null){
+        this.status = true;
+      }
+      if(this.usuarioServicio = null){
+        this.status = false;
       }
       
   }
