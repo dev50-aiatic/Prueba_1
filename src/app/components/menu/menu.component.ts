@@ -19,9 +19,9 @@ export class MenuComponent implements OnInit {
   constructor(private menuService:PerfilService , private router:Router) { }
     
   ngOnInit() { 
- 
-    this.menuService.inicioSesion();
     this.user = this.menuService.user;
+    this.menuService.inicioSesion();
+    
     this.loggedIn = this.menuService.loggedIn;
     this.estado = this.menuService.status;
   }

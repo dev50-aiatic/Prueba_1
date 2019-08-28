@@ -29,6 +29,7 @@ export class PerfilService {
   signOut(): void {
     this.authService.signOut();
     this.status = false;
+    this.loggedIn = false;
   }
 
   verificacion(){
@@ -37,7 +38,7 @@ export class PerfilService {
         this.status = this.loggedIn;
         console.log(this.status);
       }
-    
+      
   }
 
   identificacionCuenta(){
@@ -52,7 +53,9 @@ export class PerfilService {
     this.user = user;
     this.loggedIn = (this.user != null);
     });
+    if(this.loggedIn == true){
     this.status = this.loggedIn;
+    }
   }
 
   setUsuarios(usuariox:Perfil[]){
