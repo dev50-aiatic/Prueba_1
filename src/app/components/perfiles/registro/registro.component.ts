@@ -29,6 +29,9 @@ export class RegistroComponent implements OnInit {
   ngOnInit() {
     this.registroServices.obtenerUsuarios().subscribe((Perfil:Perfil[])=>{this.registroServices.setUsuarios(Perfil)});
     this.usuarios = this.registroServices.usuarios;
+    if(this.registroServices.status==true){
+      this.router.navigate(['/inicio'])
+    }
     if(this.registroServices.identificacionCuenta()=='interno'){
       this.usuarioPerfil = this.registroServices.usuarioServicio;
       this.tipoCuenta = true;
@@ -59,7 +62,7 @@ export class RegistroComponent implements OnInit {
   onAgregarUsuarioFB(){
     this.registroServices.signInWithFB();
     this.estado = this.registroServices.status;
-    this.nombre = this.registroServices.user.name;
+    this.nombrers = this.registroServices.user.name;
       this.correo = this.registroServices.user.email;
       this.url = this.registroServices.user.photoUrl;
       this.tipoCuenta = false;
