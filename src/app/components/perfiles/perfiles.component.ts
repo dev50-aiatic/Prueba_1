@@ -15,17 +15,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class PerfilesComponent implements OnInit {
 
-  imgSrc: string;
-  selectedImage: any = null;
-  isSubmitted: boolean;
   
-  formTemplate = new FormGroup({
+  
     
-    caption: new FormControl('', Validators.required),
-    category: new FormControl(''),
-    imageUrl: new FormControl('', Validators.required)
-    
-  })
+  
   constructor(public perfilService: PerfilService,private storage: AngularFireStorage) { }
 
 
@@ -33,10 +26,7 @@ export class PerfilesComponent implements OnInit {
     
   }
   
+}
+ 
   
  
-  get formControls() {
-    return this.formTemplate['controls'];
-  }
- 
-}
