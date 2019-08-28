@@ -23,12 +23,12 @@ export class MenuComponent implements OnInit {
     this.menuService.inicioSesion();
     
     this.loggedIn = this.menuService.loggedIn;
-    this.estado = this.menuService.status;
+    
   }
 
   ngDoCheck(): void {
     this.menuService.verificacion();
-    this.estado = this.menuService.status;
+    this.estado = this.menuService.loggedIn;
   }
 
   Desconexion() {

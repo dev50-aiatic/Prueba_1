@@ -23,13 +23,14 @@ export class PerfilService {
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-    this.verificacion();
+    
   }
   
   signOut(): void {
     this.authService.signOut();
     this.status = false;
     this.loggedIn = false;
+    
   }
 
   verificacion(){
