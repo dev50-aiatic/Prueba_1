@@ -68,6 +68,7 @@ export class PerfilService {
               if(element.contrasena === persona2.contrasena){
                   this.usuarioServicio = element;
                   this.status = true;
+                  this.loggedIn = true;
               }
           }else{
               console.log("error");   

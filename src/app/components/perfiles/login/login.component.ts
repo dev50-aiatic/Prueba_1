@@ -39,9 +39,7 @@ export class LoginComponent implements OnInit {
     //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
     //Add 'implements DoCheck' to the class.
     
-    if(this.perfilogin.status==true){
-      this.router.navigate(['/inicio'])
-    }
+    
     }
   onValidarDatos(){
     let persona1 = new login(this.nickInput.nativeElement.value,this.contraseña.nativeElement.value);
