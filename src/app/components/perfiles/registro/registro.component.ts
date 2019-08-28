@@ -59,6 +59,10 @@ export class RegistroComponent implements OnInit {
   onAgregarUsuarioFB(){
     this.registroServices.signInWithFB();
     this.estado = this.registroServices.status;
+    this.nombre = this.registroServices.user.name;
+      this.correo = this.registroServices.user.email;
+      this.url = this.registroServices.user.photoUrl;
+      this.tipoCuenta = false;
     if (this.estado === true){
       console.log("es valido");
       this.registroServices.onAgregar(new Perfil(this.nombrers,this.correo));
