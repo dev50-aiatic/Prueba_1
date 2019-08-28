@@ -12,10 +12,12 @@ import { Perfil } from '../../models/perfil';
 export class InicioComponent implements OnInit {
   usuarioPerfil:Perfil;
   
+  
 
   constructor(private perfilService:PerfilService, private router:Router) { }
     ngOnInit() {
       this.usuarioPerfil = this.perfilService.usuarioServicio;
+      
       
   }
 }

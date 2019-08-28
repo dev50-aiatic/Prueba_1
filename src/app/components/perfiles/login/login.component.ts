@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
  
   ngOnInit() {
     this.perfilogin.obtenerUsuarios().subscribe((Perfil:Perfil[])=>{this.perfilogin.setUsuarios(Perfil)});
-    this.perfilogin.inicioSesion();
+    
   }
   ngDoCheck(): void {
     //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
