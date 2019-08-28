@@ -25,10 +25,6 @@ export class MenuComponent implements OnInit {
     this.menuService.inicioSesion();
     this.user = this.menuService.user;
     this.loggedIn = this.menuService.loggedIn;
-
-    if(this.menuService.status==true){
-      this.router.navigate(['/inicio'])
-    }
   }
 
   ngDoCheck(): void {
