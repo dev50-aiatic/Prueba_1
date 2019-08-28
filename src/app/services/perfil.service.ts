@@ -4,7 +4,7 @@ import { login } from '../models/login';
 import { BdService } from './bd.service';
 import { Router} from '@angular/router';
 import { Identificacion} from '../models/identificacion';
-import { AuthService } from "angularx-social-login";
+import { AuthService, SocialUser } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 
 
@@ -19,17 +19,47 @@ import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firest
   providedIn: 'root'
 })
 export class PerfilService {
-
-
-
   constructor(private router:Router,private bdservice: BdService,private authService: AuthService) { }
-  status :boolean;
+  
+  status :boolean = false;
   usuarios : Perfil [] = [];
   usuarioServicio:Perfil;
   valido : boolean = false;
 
-  user: {};
+  public user: SocialUser;
   public loggedIn: boolean;
+
+
+
+  signInWithFB(): void {
+    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+  }
+  
+  signOut(): void {
+    this.authService.signOut();
+  }
+
+  verificacion(){
+    this.loggedIn = (this.user != null);
+    this.status = this.loggedIn;
+}
+
+  identificacionCuenta(){
+    let estado:string;
+    if(this.usuarioServicio != null){estado='interno';}
+    if(this.user !=null){estado='facebook'}
+    return estado;
+}
+
+  inicioSesion(){
+    this.authService.authState.subscribe((user) => {
+    this.user = user;
+    this.loggedIn = (this.user != null);
+    });
+    this.status = this.loggedIn;
+}
+
+
   
   setUsuarios(usuariox:Perfil[]){
     this.usuarios = usuariox;
@@ -94,12 +124,8 @@ export class PerfilService {
     else{
         return false;
     }
+    }
   
-  
+}  
 
-}
-
- 
-  
-}
 

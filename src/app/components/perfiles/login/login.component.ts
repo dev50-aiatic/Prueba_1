@@ -32,13 +32,16 @@ export class LoginComponent implements OnInit {
   constructor(private perfilogin:PerfilService,private router:Router,private authService: AuthService,public _auth: AuthService) { }
  
   ngOnInit() {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = (user != null);
-    });
-  
     this.perfilogin.obtenerUsuarios().subscribe((Perfil:Perfil[])=>{this.perfilogin.setUsuarios(Perfil)});
   }
+  ngDoCheck(): void {
+    //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
+    //Add 'implements DoCheck' to the class.
+    
+    if(this.perfilogin.status==true){
+      this.router.navigate(['/inicio'])
+    }
+    }
   onValidarDatos(){
     let persona1 = new login(this.nickInput.nativeElement.value,this.contraseña.nativeElement.value);
     this.perfilogin.onValidacionPersona(persona1);
@@ -55,18 +58,8 @@ export class LoginComponent implements OnInit {
     }
   }
   signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-    this.estado = true;
-    this.router.navigate(['inicio']);
-
-    
-
-  }
-
-  signOut(): void {
-    this.authService.signOut();
-    this.estado = false;
-  }
+    this.perfilogin.signInWithFB();
+   }
   
 }
 
