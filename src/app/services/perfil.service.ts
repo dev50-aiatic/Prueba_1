@@ -3,21 +3,13 @@ import { Perfil } from '../models/perfil';
 import { login } from '../models/login';
 import { BdService } from './bd.service';
 import { Router} from '@angular/router';
-import { Identificacion} from '../models/identificacion';
 import { AuthService, SocialUser } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
-
-
-import { AngularFireAuth } from '@angular/fire/auth';
-import { map } from 'rxjs/operators';
-
-
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
-
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class PerfilService {
   constructor(private router:Router,private bdservice: BdService,private authService: AuthService) { }
   
@@ -28,8 +20,6 @@ export class PerfilService {
 
   public user: SocialUser;
   public loggedIn: boolean;
-
-
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
@@ -42,14 +32,14 @@ export class PerfilService {
   verificacion(){
     this.loggedIn = (this.user != null);
     this.status = this.loggedIn;
-}
+  }
 
   identificacionCuenta(){
     let estado:string;
     if(this.usuarioServicio != null){estado='interno';}
     if(this.user !=null){estado='facebook'}
     return estado;
-}
+  }
 
   inicioSesion(){
     this.authService.authState.subscribe((user) => {
@@ -57,19 +47,20 @@ export class PerfilService {
     this.loggedIn = (this.user != null);
     });
     this.status = this.loggedIn;
-}
+  }
 
-
-  
   setUsuarios(usuariox:Perfil[]){
     this.usuarios = usuariox;
-}
+  }
+
   obtenerUsuarios(){
     return this.bdservice.cargarPersonas();
-    }
+  }
+
   onValidacionPersona(persona1:login){
       console.log("el nick es: "+persona1.usuario+"\nla contraseña es:"+persona1.contrasena);
   }
+
   onValidacion(persona2:login){
       this.usuarios.forEach(element => {
           if(element.usuario === persona2.usuario){
@@ -78,24 +69,22 @@ export class PerfilService {
                   this.status = true;
               }
           }else{
-              console.log("error");
-              
-          }
-          
+              console.log("error");   
+          } 
       });
   }
- onValidacionid(id){
+
+  onValidacionid(id){
     this.usuarios.forEach(element => {
         if(element.identificacion === id){
                 this.valido = false;
-
         }else{
             this.valido = true;
             console.log("el id es valido");  
-        }
-        
+        }   
     });
- }
+  } 
+
   onAgregar(usuario1:Perfil){
     if(this.usuarios == null){
         this.usuarios = [];
@@ -104,6 +93,7 @@ export class PerfilService {
     this.bdservice.guardarUsuario(this.usuarios);
   
   }
+
   posicionamiento(usuarioPos){
       console.log("el nombre que entra en el posicionamiento es: "+usuarioPos.nombre);
       console.log("entra");
@@ -117,6 +107,7 @@ export class PerfilService {
       });
       return contador;
   }
+
   navegar(){
     if(this.status){
         return true;
@@ -125,7 +116,6 @@ export class PerfilService {
         return false;
     }
     }
-  
 }  
 
 
