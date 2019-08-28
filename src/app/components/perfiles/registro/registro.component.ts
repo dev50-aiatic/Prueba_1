@@ -58,21 +58,26 @@ export class RegistroComponent implements OnInit {
   }
   onAgregarUsuarioFB(){
     this.registroServices.signInWithFB();
-    console.log();
+    this.estado = this.registroServices.status;
+    if (this.estado === true){
+      console.log("es valido");
+      this.registroServices.onAgregar(new Perfil(this.nombrers,this.correo));
+      console.log(this.nombrers);
+    }
+    
     //this.registroServices.onValidacionid(this.identificacion);
     //this.valido = this.registroServices.valido;
     //if(this.valido===true){
-    console.log("es valido");
-      this.registroServices.onAgregar(new Perfil(this.nombrers,this.correo));
+    
     //  this.router.navigate(['/login']);
       
-    //}else{
-    //this.router.navigate(['/registro']);
-    //alert("identificacion en uso");
+    else{
+    this.router.navigate(['/registro']);
+    alert("pailas en uso");
     }
     
      
   }
 
   
-
+}
