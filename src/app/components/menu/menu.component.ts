@@ -33,6 +33,7 @@ export class MenuComponent implements OnInit {
   Desconexion() {
     console.log('Salio');
     this.menuService.signOut();
+    this.menuService.status = false;
     
   }
   
