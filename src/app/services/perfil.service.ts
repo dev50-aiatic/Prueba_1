@@ -31,18 +31,17 @@ export class PerfilService {
   
   signOut(): void {
     this.authService.signOut();
-  
+    this.status = false;
   }
 
   verificacion(){
-    if (this.status === true){
-        this.status = true;
-      }
-      else{
         this.loggedIn = (this.user != null);
-        this.status = this.loggedIn;
+        if(this.loggedIn === true){
+          this.status = this.loggedIn;
+        }
+        
         console.log(this.status);
-      }
+      
   }
 
   identificacionCuenta(){

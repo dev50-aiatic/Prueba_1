@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
   
 
   ngDoCheck(): void {
-    //this.menuService.verificacion();
+    this.menuService.verificacion();
     this.estado = this.menuService.status;  
  
   }
