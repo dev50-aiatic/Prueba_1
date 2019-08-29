@@ -90,14 +90,15 @@ export class LoginComponent implements OnInit {
   signInWithFB(): void {
     this.perfilogin.signInWithFB();
     this.estado = this.perfilogin.status;
-    this.nombrers = this.perfilogin.user.name;
-    this.correo = this.perfilogin.user.email;
-    this.url = this.perfilogin.user.photoUrl;
-    this.tipoCuenta = false;
-        
-          this.perfilogin.onAgregar(new Perfil(this.nombrers,this.correo));
-          console.log(this.nombrers,this.correo,this.url);
-        } 
+    if (this.perfilogin.status === true){
+      this.nombrers = this.perfilogin.user.name;
+      this.correo = this.perfilogin.user.email;
+      this.url = this.perfilogin.user.photoUrl;
+      this.perfilogin.onAgregar(new Perfil(this.nombrers,this.correo));
+      console.log(this.nombrers,this.correo,this.url);
+    }
+    
+    } 
         
   
    
