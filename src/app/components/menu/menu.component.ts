@@ -21,6 +21,8 @@ export class MenuComponent implements OnInit {
   ngOnInit() { 
     this.user = this.menuService.user;
     this.menuService.inicioSesion(); 
+    if(this.estado===true){
+      this.router.navigate(['/inicio']);
     }
   
 
