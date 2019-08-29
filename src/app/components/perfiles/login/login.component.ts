@@ -94,16 +94,12 @@ export class LoginComponent implements OnInit {
     this.correo = this.perfilogin.user.email;
     this.url = this.perfilogin.user.photoUrl;
     this.tipoCuenta = false;
-        if (this.estado === true){
-          console.log("conecto");
+        
           this.perfilogin.onAgregar(new Perfil(this.nombrers,this.correo));
           console.log(this.nombrers,this.correo,this.url);
         } 
-        else{
-        this.router.navigate(['/registro']);
-        alert("pailas en uso");
-        }   
-  } 
+        
+  
    
   signInWithGG():void {
     this.perfilogin.signInWithGoogle();
@@ -113,16 +109,16 @@ export class LoginComponent implements OnInit {
     this.correo = this.perfilogin.user.email;
     this.url = this.perfilogin.user.photoUrl;
     this.tipoCuenta = false;
-        if (this.estado === true){
+     
           console.log("conecto");
           this.perfilogin.onAgregar(new Perfil(this.nombrers,this.correo));
           console.log(this.nombrers,this.correo,this.url);
-        } 
-        else{
+        
+    
         this.router.navigate(['/registro']);
         alert("pailas en uso");
-        }   
-  }
+          
   
+  }
 }
 
