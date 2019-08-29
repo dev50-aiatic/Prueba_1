@@ -25,14 +25,14 @@ export class MenuComponent implements OnInit {
   
 
   ngDoCheck(): void {
-    this.menuService.verificacion();
+    //this.menuService.verificacion();
     this.estado = this.menuService.status;  
  
   }
 
   Desconexion() {
     console.log('Salio');
-    
+    this.menuService.signOut();
     this.menuService.status = false;
     
   }
