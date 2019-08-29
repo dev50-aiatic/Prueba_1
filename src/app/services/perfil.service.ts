@@ -37,13 +37,14 @@ export class PerfilService {
   }
 
   verificacion(){
-    this.loggedIn = (this.user != null);
-      if(this.loggedIn === true){
+    if (this.status === true){
+        this.status = true;
+      }
+      else{
+        this.loggedIn = (this.user != null);
         this.status = this.loggedIn;
         console.log(this.status);
-      
       }
-  
   }
 
   identificacionCuenta(){
