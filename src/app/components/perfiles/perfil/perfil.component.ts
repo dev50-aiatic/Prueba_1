@@ -25,12 +25,10 @@ export class PerfilComponent implements OnInit {
     ngOnInit() {
       this.usuarioPerfil = this.perfilService.usuarioServicio;
       
-    if(this.estado===true){
-        this.router.navigate(['/inicio'])
+    
       
-    }else{
-        this.router.navigate(['/login']);
-    }
+    
+    
 
       if(this.perfilService.identificacionCuenta()=='interno'){
         this.usuarioPerfil = this.perfilService.usuarioServicio;

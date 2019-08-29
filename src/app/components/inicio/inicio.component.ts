@@ -20,13 +20,12 @@ export class InicioComponent implements OnInit {
 
   constructor(private perfilService:PerfilService, private router:Router) { }
     ngOnInit() {
-      if(this.estado===true){
-        this.router.navigate(['/inicio'])
+      
       }
 
       
       
-  }
+  
   ngDoCheck(): void {
     //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
     //Add 'implements DoCheck' to the class.
