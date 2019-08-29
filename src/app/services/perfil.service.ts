@@ -31,9 +31,7 @@ export class PerfilService {
   
   signOut(): void {
     this.authService.signOut();
-    
-   
-    
+  
   }
 
   verificacion(){
