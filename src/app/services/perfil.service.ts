@@ -33,6 +33,7 @@ export class PerfilService {
     this.authService.signOut();
     this.status = false;
     this.loggedIn = false;
+    this.signOut();
     
   }
 
