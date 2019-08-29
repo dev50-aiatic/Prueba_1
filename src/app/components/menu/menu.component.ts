@@ -35,7 +35,12 @@ export class MenuComponent implements OnInit {
     console.log('Salio');
     this.menuService.signOut();
     this.menuService.status = false;
-    
+  
+  
+  }
+  salirEstado() {
+    this.menuService.usuarioServicio = null;
+    this.menuService.signOut();
   }
   
   ToggleNavBar () {

@@ -15,7 +15,7 @@
                       <p  class="nav-item nav-link lead" *ngIf="estado" [routerLink]="['/perfil']" (click)="ToggleNavBar()">Perfil</p>
                       <p  class="nav-item nav-link lead" *ngIf="estado" [routerLink]="['/tareas']" (click)="ToggleNavBar()">Tareas</p>
                       <p  class="nav-item nav-link lead" *ngIf="estado" [routerLink]="['/ajustes']" (click)="ToggleNavBar()">Ajustes</p>
-                      <p  class="nav-item nav-link lead" *ngIf="estado" [routerLink]="['/login']" (click)="ToggleNavBar();Desconexion()">Salir</p>
+                      <p  class="nav-item nav-link lead" *ngIf="estado" [routerLink]="['/login']" (click)="ToggleNavBar();Desconexion();salirEstado()">Salir</p>
                 </div>
       
           
