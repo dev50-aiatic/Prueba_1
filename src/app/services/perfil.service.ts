@@ -59,10 +59,15 @@ export class PerfilService {
     this.user = user;
     this.loggedIn = (this.user != null);
     });
-    if(this.loggedIn == true){
-    this.status = this.loggedIn;
+    if (this.status === true){
+      this.status = true;
     }
-  }
+    else{
+      this.loggedIn = (this.user != null);
+      this.status = this.loggedIn;
+      console.log(this.status);
+    }
+}
 
   setUsuarios(usuariox:Perfil[]){
     this.usuarios = usuariox;

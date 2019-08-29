@@ -33,6 +33,8 @@ export class InicioComponent implements OnInit {
     this.usuarioPerfil = this.perfilService.usuarioServicio;
     if(this.estado===false){
       this.router.navigate(['/login']);
+      console.log(this.estado + "sigo aqui perra")
+      
     }
   }
 }

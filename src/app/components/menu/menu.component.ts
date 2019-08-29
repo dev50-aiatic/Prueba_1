@@ -20,14 +20,14 @@ export class MenuComponent implements OnInit {
     
   ngOnInit() { 
     this.user = this.menuService.user;
-    
-    this.loggedIn = this.menuService.loggedIn;  
-  }
+    this.menuService.inicioSesion(); 
+    }
+  
 
   ngDoCheck(): void {
     this.menuService.verificacion();
     this.estado = this.menuService.status;  
-    this.menuService.inicioSesion();        
+ 
   }
 
   Desconexion() {
