@@ -30,8 +30,16 @@ export class LoginComponent implements OnInit {
   public loggedIn: boolean;
   
   constructor(private perfilogin:PerfilService,private router:Router,private authService: AuthService,public _auth: AuthService) { }
+  usuarioPerfil:Perfil;
+  //Variables para usuario con login local
+  nombre:string;
+  nick:string;
+  nacimiento:Date;
+  contrasena:string;
+  identificacion:number;
   
-   //Variables para usuarios con SocialLogil
+  
+  //Variables para usuarios con SocialLogil
   
    url:string;
    nombrers:string;
@@ -39,8 +47,19 @@ export class LoginComponent implements OnInit {
    tipoCuenta:boolean;
 
   ngOnInit() {
+
+    this.usuarioPerfil = this.perfilogin.usuarioServicio;
+
     this.perfilogin.obtenerUsuarios().subscribe((Perfil:Perfil[])=>{this.perfilogin.setUsuarios(Perfil)});
-    
+    if(this.perfilogin.identificacionCuenta()=='interno'){
+      this.usuarioPerfil = this.perfilogin.usuarioServicio;
+      this.tipoCuenta = true;
+    }else if (this.perfilogin.identificacionCuenta()=='facebook') {
+      this.nombrers = this.perfilogin.user.name;
+      this.correo = this.perfilogin.user.email;
+      this.url = this.perfilogin.user.photoUrl;
+      this.tipoCuenta = false;
+  }
     
   }
   ngDoCheck(): void {
@@ -70,7 +89,6 @@ export class LoginComponent implements OnInit {
   }
   signInWithFB(): void {
     this.perfilogin.signInWithFB();
-    this.router.navigate(['/inicio']);
     this.estado = this.perfilogin.status;
     this.nombrers = this.perfilogin.user.name;
     this.correo = this.perfilogin.user.email;
