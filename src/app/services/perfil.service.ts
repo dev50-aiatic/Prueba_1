@@ -43,9 +43,6 @@ export class PerfilService {
       else{
         this.loggedIn = (this.user != null);
         this.status = this.loggedIn;
-          if(this.status === false){
-            this.router.navigate(['/login'])
-          }
         console.log(this.status);
       }
   }

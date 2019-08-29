@@ -20,10 +20,13 @@ export class InicioComponent implements OnInit {
 
   constructor(private perfilService:PerfilService, private router:Router) { }
     ngOnInit() {
-      if(this.perfilService.status==true){
+      if(this.estado===true){
         this.router.navigate(['/inicio'])
       
+      }else{
+        this.router.navigate(['/login']);
       }
+
       
       
   }
