@@ -19,13 +19,12 @@ export class MenuComponent implements OnInit {
   constructor(private menuService:PerfilService , private router:Router) { }
     
   ngOnInit() { 
-    this.user = this.menuService.user;
+   
     this.menuService.inicioSesion(); 
-    if(this.estado===true){
-      this.router.navigate(['/inicio']);
-    }
+    
+    
   
-
+  }
   ngDoCheck(): void {
     this.menuService.verificacion();
     this.estado = this.menuService.status;  

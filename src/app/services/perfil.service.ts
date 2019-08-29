@@ -34,15 +34,17 @@ export class PerfilService {
     this.status = false;
   }
 
-  verificacion(){
-        this.loggedIn = (this.user != null);
-        if(this.loggedIn === true){
-          this.status = this.loggedIn;
-        }
-        
-        console.log(this.status);
-      
+
+verificacion() {
+    if (this.user != null && this.usuarioServicio == null) {
+        this.status = true;
+    }else if(this.user == null && this.usuarioServicio != null){
+        this.status = true;
+    }else if(this.user == null && this.usuarioServicio == null){
+        this.status = false;
+    }
   }
+
 
   identificacionCuenta(){
     let estado:string;
@@ -51,20 +53,15 @@ export class PerfilService {
     return estado;
   }
 
-  inicioSesion(){
+  inicioSesion() {
     this.authService.authState.subscribe((user) => {
-    this.user = user;
-    this.loggedIn = (this.user != null);
+        this.user = user;
+        this.loggedIn = (this.user != null);
     });
-    if (this.status === true){
-      this.status = true;
+    this.status = this.loggedIn;
     }
-    else{
-      this.loggedIn = (this.user != null);
-      this.status = this.loggedIn;
-      console.log(this.status);
-    }
-}
+
+
 
   setUsuarios(usuariox:Perfil[]){
     this.usuarios = usuariox;
