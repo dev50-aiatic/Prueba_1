@@ -22,9 +22,6 @@ export class InicioComponent implements OnInit {
     ngOnInit() {
       if(this.estado===true){
         this.router.navigate(['/inicio'])
-      
-      }else{
-        this.router.navigate(['/login']);
       }
 
       
