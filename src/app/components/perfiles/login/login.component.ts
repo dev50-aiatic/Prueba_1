@@ -30,7 +30,14 @@ export class LoginComponent implements OnInit {
   public loggedIn: boolean;
   
   constructor(private perfilogin:PerfilService,private router:Router,private authService: AuthService,public _auth: AuthService) { }
- 
+  
+   //Variables para usuarios con SocialLogil
+  
+   url:string;
+   nombrers:string;
+   correo:string;
+   tipoCuenta:boolean;
+
   ngOnInit() {
     this.perfilogin.obtenerUsuarios().subscribe((Perfil:Perfil[])=>{this.perfilogin.setUsuarios(Perfil)});
     
@@ -64,10 +71,39 @@ export class LoginComponent implements OnInit {
   signInWithFB(): void {
     this.perfilogin.signInWithFB();
     this.router.navigate(['/inicio']);
-   }
+    this.estado = this.perfilogin.status;
+    this.nombrers = this.perfilogin.user.name;
+    this.correo = this.perfilogin.user.email;
+    this.url = this.perfilogin.user.photoUrl;
+    this.tipoCuenta = false;
+        if (this.estado === true){
+          console.log("conecto");
+          this.perfilogin.onAgregar(new Perfil(this.nombrers,this.correo));
+          console.log(this.nombrers,this.correo,this.url);
+        } 
+        else{
+        this.router.navigate(['/registro']);
+        alert("pailas en uso");
+        }   
+  } 
+   
   signInWithGG():void {
     this.perfilogin.signInWithGoogle();
     this.router.navigate(['/inicio']);
+    this.estado = this.perfilogin.status;
+    this.nombrers = this.perfilogin.user.name;
+    this.correo = this.perfilogin.user.email;
+    this.url = this.perfilogin.user.photoUrl;
+    this.tipoCuenta = false;
+        if (this.estado === true){
+          console.log("conecto");
+          this.perfilogin.onAgregar(new Perfil(this.nombrers,this.correo));
+          console.log(this.nombrers,this.correo,this.url);
+        } 
+        else{
+        this.router.navigate(['/registro']);
+        alert("pailas en uso");
+        }   
   }
   
 }
