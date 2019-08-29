@@ -5,7 +5,7 @@ import { BdService } from './bd.service';
 import { Router} from '@angular/router';
 import { AuthService, SocialUser } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
-
+import { usuarioSL } from '../models/Slogin';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +15,7 @@ export class PerfilService {
   
   status = false;
   usuarios : Perfil [] = [];
+  public users: usuarioSL[] = [];
   usuarioServicio:Perfil;
   valido : boolean = false;
 
@@ -88,6 +89,33 @@ verificacion() {
           } 
       });
   }
+  validacionUsuariosF(usuarioVal: usuarioSL) {
+    let decision = true;
+    if (this.users != null) {
+        for (let index = 0; index < this.users.length; index++) {
+            if (this.users[index].email == usuarioVal.email) {
+                decision = false;
+            }
+        }
+    }
+    return decision;
+}
+
+  guardarUsuariosF() {
+    try {
+        console.log("entro esa wea" + this.user.name);
+        if (this.user != null) {
+            let usuarioTemp = new usuarioSL(this.user.name, this.user.email, this.user.photoUrl);
+            if (this.validacionUsuariosF(usuarioTemp) == true) {
+                this.users.push(usuarioTemp);
+            }                
+        }
+        this.bdservice.guardarUsuarioSL(this.users);            
+    } catch (error) {
+        
+    }
+   
+}
 
   onValidacionid(id){
     this.usuarios.forEach(element => {
