@@ -21,6 +21,7 @@ export class PerfilService {
 
   public user: SocialUser;
   public loggedIn: boolean;
+  public primeraVez = false;
 
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
@@ -76,10 +77,10 @@ verificacion() {
       console.log("el nick es: "+persona1.usuario+"\nla contraseña es:"+persona1.contrasena);
   }
 
-  setUsuariosF() {
+  setUsuariosSL() {
     this.bdservice.cargarPersonasSL().subscribe(
-        (usuariosF: usuarioSL[]) => {
-            this.users = usuariosF;
+        (usuariosSL: usuarioSL[]) => {
+            this.users = usuariosSL;
         }
     );
   }
@@ -109,20 +110,22 @@ verificacion() {
     return decision;
 }
 
-  guardarUsuariosF() {
-    try {
-        console.log("entro esa wea" + this.user.name);
-        if (this.user != null) {
-            let usuarioTemp = new usuarioSL(this.user.name, this.user.email, this.user.photoUrl);
-            if (this.validacionUsuariosSL(usuarioTemp) == true) {
-                this.users.push(usuarioTemp);
-            }                
-        }
-        this.bdservice.guardarUsuarioSL(this.users);            
-    } catch (error) {
-        
-    }
-   
+guardarUsuariosF() {
+  console.log("entro esa wea" + this.user.name);
+  if (this.user != null) {
+      let usuarioTemp = new usuarioSL(this.user.name, this.user.email, this.user.photoUrl);
+      if (this.validacionUsuariosSL(usuarioTemp) == true) {
+          this.primeraVez = true;
+          if(this.users == null){
+              this.users = [];
+              this.users.push(usuarioTemp);
+          }else{
+              this.users.push(usuarioTemp);
+          }
+          
+      }
+  }
+  this.bdservice.guardarUsuarioSL(this.users);
 }
 
 
