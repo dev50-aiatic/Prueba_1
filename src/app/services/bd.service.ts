@@ -23,8 +23,8 @@ export class BdService{
         return this.htppClients.get("https://prueba1-cd924.firebaseio.com/datosSL.json");
     }
 
-    guardarUsuarioSL(usuariosF:usuarioSL[]){
-        this.htppClients.put('https://prueba1-cd924.firebaseio.com/datosSL.json', usuariosF)
+    guardarUsuarioSL(usuariosSL:usuarioSL[]){
+        this.htppClients.put('https://prueba1-cd924.firebaseio.com/datosSL.json', usuariosSL)
         .subscribe(
             response => console.log("se agrego a personas f desde dataService", response),
             error => console.log("Ocurrio algo, inesperado: "+ error)

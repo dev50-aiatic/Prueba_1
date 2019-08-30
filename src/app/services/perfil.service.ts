@@ -76,6 +76,13 @@ verificacion() {
       console.log("el nick es: "+persona1.usuario+"\nla contraseña es:"+persona1.contrasena);
   }
 
+  setUsuariosF() {
+    this.bdservice.cargarPersonasSL().subscribe(
+        (usuariosF: usuarioSL[]) => {
+            this.users = usuariosF;
+        }
+    );
+  }
   onValidacion(persona2:login){
       this.usuarios.forEach(element => {
           if(element.usuario === persona2.usuario){
@@ -90,7 +97,7 @@ verificacion() {
       });
   }
   
-  validacionUsuariosF(usuarioVal: usuarioSL) {
+  validacionUsuariosSL(usuarioVal: usuarioSL) {
     let decision = true;
     if (this.users != null) {
         for (let index = 0; index < this.users.length; index++) {
@@ -107,7 +114,7 @@ verificacion() {
         console.log("entro esa wea" + this.user.name);
         if (this.user != null) {
             let usuarioTemp = new usuarioSL(this.user.name, this.user.email, this.user.photoUrl);
-            if (this.validacionUsuariosF(usuarioTemp) == true) {
+            if (this.validacionUsuariosSL(usuarioTemp) == true) {
                 this.users.push(usuarioTemp);
             }                
         }
@@ -117,6 +124,7 @@ verificacion() {
     }
    
 }
+
 
   onValidacionid(id){
     this.usuarios.forEach(element => {
